@@ -1,0 +1,6 @@
+.container {
+  background-color: rgb(228, 228, 228);
+  display: inline-block;
+  border: solid 1px gray;
+  border-radius: 5px;
+}
