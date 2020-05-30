@@ -1,5 +1,46 @@
-.container {
-  background-color: #14bdac;
-  width: auto;
-  height: 300px;
+.field {
+  background: rgb(20,189,172);
+  background: linear-gradient(175deg, rgba(20,189,172,1) 0%, rgba(20,189,172,1) 44%, rgba(226,226,226,1) 85%); 
+  margin: -5px 0;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.restart {
+  color: #14bdac;
+  font-weight: bold;
+  width: 100%;
+  height: 70px;
+  background-color: white;
+  border-radius: 5px;
+  border: 0px white;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: arial,sans-serif;
+}
+
+.cell {
+  border: 3px solid rgb(13,161,146);
+  width: 80px;
+  height: 80px;
+}
+
+.noBorderLeft {
+  border-left: none;
+}
+
+.noBorderTop {
+  border-top: none;
+}
+
+.noBorderRight {
+  border-right: none;
+}
+
+.noBorderBottom {
+  border-bottom: none;
 }
