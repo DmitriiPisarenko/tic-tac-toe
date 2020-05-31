@@ -17,6 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .image  {
@@ -30,4 +31,8 @@
   border: 1px solid gray;
   border-radius: 5px;
   margin: 0 5px;
+}
+
+.sideChosen {
+  background: rgb(20,189,172);
 }

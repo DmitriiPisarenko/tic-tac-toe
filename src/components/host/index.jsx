@@ -34,6 +34,7 @@ export default function Host() {
     setMark(MAP_STATE_CHANGE[mark]);
     setBeforeStart(false);
     if (winner) {
+      // eslint-disable-next-line no-alert
       alert(`${mark} победил!`);
       setGameOver(true);
     }
@@ -41,7 +42,7 @@ export default function Host() {
 
   return (
     <div className={styles.container}>
-      <Header />
+      <Header mark={mark} onSideClick={beforeStart ? setMark : undefined} />
       <Field field={field} onClick={onCellClick} onRestartClick={onRestartClick} />
     </div>
   );

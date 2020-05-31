@@ -1,5 +1,4 @@
 .field {
-  background: rgb(20,189,172);
   background: linear-gradient(175deg, rgba(20,189,172,1) 0%, rgba(20,189,172,1) 44%, rgba(226,226,226,1) 85%); 
   margin: -5px 0;
   padding: 10px;

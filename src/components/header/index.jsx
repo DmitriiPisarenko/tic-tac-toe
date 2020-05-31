@@ -1,23 +1,43 @@
 import React from 'react';
+import propTypes from 'prop-types';
+import classNames from 'classnames';
 import styles from './header.module.css';
-import circle from '../../assets/images/circle.png'
-import cross from '../../assets/images/cross.png'
+import circle from '../../assets/images/circle.png';
+import cross from '../../assets/images/cross.png';
+import { MARK_X, MARK_O } from '../../constants';
 
-export default function Header() {
+export default function Header(props) {
+  const { mark, onSideClick } = props;
+
+  function handlerSideClick(newMark) {
+    return () => {
+      if (onSideClick) {
+        onSideClick(newMark);
+      }
+    };
+  }
   return (
-    <div className={styles.container}>
-      <button className={styles.side} >
-        <img className={styles.image} src={circle} alt='circle' />
+    <header className={styles.container}>
+      <button type="button" className={classNames(styles.side, { [styles.sideChosen]: mark === MARK_O })} onClick={handlerSideClick(MARK_O)}>
+        <img className={styles.image} src={circle} alt="circle" />
       </button>
 
       <div className={styles.score} />
       <p>-</p>
       <div className={styles.score} />
 
-      <button className={styles.side} >
-        <img className={styles.image} src={cross} alt='cross' />
+      <button type="button" className={classNames(styles.side, { [styles.sideChosen]: mark === MARK_X })} onClick={handlerSideClick(MARK_X)}>
+        <img className={styles.image} src={cross} alt="cross" />
       </button>
-    </div>
-  )
-
+    </header>
+  );
 }
+
+Header.propTypes = {
+  mark: propTypes.oneOf([MARK_O, MARK_X]).isRequired,
+  onSideClick: propTypes.func,
+};
+
+Header.defaultProps = {
+  onSideClick: undefined,
+};
