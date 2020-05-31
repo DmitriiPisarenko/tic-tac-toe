@@ -26,7 +26,7 @@ export default function Cell(props) {
 
 Cell.propTypes = {
   className: propTypes.string,
-  children: propTypes.oneOf([undefined, MARK_X, MARK_O]).isRequired,
+  children: propTypes.oneOf([undefined, MARK_X, MARK_O]),
   row: propTypes.number.isRequired,
   col: propTypes.number.isRequired,
   onClick: propTypes.func.isRequired,
@@ -34,4 +34,5 @@ Cell.propTypes = {
 
 Cell.defaultProps = {
   className: undefined,
+  children: undefined,
 };
