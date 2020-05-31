@@ -1,32 +1,38 @@
 import React from 'react';
-import styles from './/field.module.css';
-import classNames from 'classnames';
+import propTypes from 'prop-types';
+import styles from './field.module.css';
+import Cell from '../cell';
 
-export default function Field() {
+export default function Field(props) {
+  const { field, onClick, onRestartClick } = props;
   return (
     <div className={styles.container}>
       <div className={styles.field}>
-        <div>
-          <div className={classNames(styles.cell, styles.noBorderTop, styles.noBorderLeft)} />
-          <div className={classNames(styles.cell, styles.noBorderLeft)} />
-          <div className={classNames(styles.cell, styles.noBorderLeft, styles.noBorderBottom)} />
-        </div>
-        <div>
-          <div className={classNames(styles.cell, styles.noBorderTop)} />
-          <div className={classNames(styles.cell)} />
-          <div className={classNames(styles.cell, styles.noBorderBottom)} />
-        </div>
-        <div>
-          <div className={classNames(styles.cell, styles.noBorderTop, styles.noBorderRight)} />
-          <div className={classNames(styles.cell, styles.noBorderRight)} />
-          <div className={classNames(styles.cell, styles.noBorderRight, styles.noBorderBottom)} />
-        </div>
+        {field.map((row, i) => (
+          <div className={styles.row}>
+            {row.map((cell, j) => (
+              <Cell className={styles.cell} row={i} col={j} onClick={onClick}>
+                {cell}
+              </Cell>
+            ))}
+          </div>
+        ))}
       </div>
 
-      <button type='button' className={styles.restart}>
+      <button type="button" className={styles.restart} onClick={onRestartClick}>
         НАЧАТЬ ЗАНОВО
       </button>
 
     </div>
-  )
+  );
 }
+
+Field.propTypes = {
+  field: propTypes.arrayOf(
+    propTypes.arrayOf(
+      propTypes.string,
+    ),
+  ).isRequired,
+  onClick: propTypes.func.isRequired,
+  onRestartClick: propTypes.func.isRequired,
+};

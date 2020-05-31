@@ -2,11 +2,6 @@
   background: rgb(20,189,172);
   background: linear-gradient(175deg, rgba(20,189,172,1) 0%, rgba(20,189,172,1) 44%, rgba(226,226,226,1) 85%); 
   margin: -5px 0;
-  z-index: 1;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 10px;
 }
 
@@ -16,7 +11,6 @@
   width: 100%;
   height: 70px;
   background-color: white;
-  border-radius: 5px;
   border: 0px white;
   cursor: pointer;
   font-size: 14px;
@@ -24,23 +18,19 @@
 }
 
 .cell {
-  border: 3px solid rgb(13,161,146);
-  width: 80px;
-  height: 80px;
+  border-width: 0 3px 3px 0;
+  border-style: solid; 
+  border-color: rgb(13,161,146);
 }
 
-.noBorderLeft {
-  border-left: none;
+.field > div:last-of-type .cell {
+  border-bottom: none;
 }
 
-.noBorderTop {
-  border-top: none;
-}
-
-.noBorderRight {
+.field .cell:last-of-type {
   border-right: none;
 }
 
-.noBorderBottom {
-  border-bottom: none;
+.row {
+  display: flex;
 }
