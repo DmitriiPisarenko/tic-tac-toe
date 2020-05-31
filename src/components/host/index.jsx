@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react';
 import styles from './host.module.css';
 import Header from '../header';
 import Field from '../field';
-import { MARK_X, MAP_STATE_CHANGE } from '../../constants';
+import { MARK_X, MAP_STATE_CHANGE, MARK_O } from '../../constants';
 import getWinner from '../../utils';
+
+const score = {
+  [MARK_X]: 0,
+  [MARK_O]: 0,
+};
 
 export default function Host() {
   const [mark, setMark] = useState(MARK_X);
@@ -35,14 +40,15 @@ export default function Host() {
     setBeforeStart(false);
     if (winner) {
       // eslint-disable-next-line no-alert
-      alert(`${mark} победил!`);
+      alert(`${winner} победил!`);
       setGameOver(true);
+      score[winner] += 1;
     }
   }
 
   return (
     <div className={styles.container}>
-      <Header mark={mark} onSideClick={beforeStart ? setMark : undefined} />
+      <Header mark={mark} onSideClick={beforeStart ? setMark : undefined} score={score} />
       <Field field={field} onClick={onCellClick} onRestartClick={onRestartClick} />
     </div>
   );
