@@ -24,33 +24,10 @@
   height: 40px;
 }
 
-.switchBtn {
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  border-radius: 19px;
-  background: #bfbfbf;
-  z-index: 0;
-  margin: 0;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  transition-duration: 300ms;
-}
-.switchBtn::after {
-  content: "";
+.score {
+  width: 20px;
   height: 30px;
-  width: 30px;
-  border-radius: 17px;
-  background: #fff;
-  left: 7px;
-  top: 2px;
-  transition-duration: 300ms;
-  position: absolute;
-  z-index: 1;
-}
-
-.switchOn::after {
-  left: 27px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 0 5px;
 }
