@@ -3,11 +3,13 @@ import styles from './host.module.css';
 import Header from '../header';
 import Field from '../field';
 import { MARK_X, MAP_STATE_CHANGE } from '../../constants';
+import getWinner from '../../utils';
 
 export default function Host() {
   const [mark, setMark] = useState(MARK_X);
   const [field, updateField] = useState([]);
   const [beforeStart, setBeforeStart] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
   useEffect(() => {
     if (!beforeStart) {
       return;
@@ -18,17 +20,23 @@ export default function Host() {
 
   function onRestartClick() {
     setBeforeStart(true);
+    setGameOver(false);
   }
 
   function onCellClick(row, col) {
-    if (field[row][col] !== undefined) {
+    if (field[row][col] !== undefined || gameOver) {
       return;
     }
     const newField = field.slice();
     newField[row][col] = mark;
+    const winner = getWinner(newField);
     updateField(newField);
     setMark(MAP_STATE_CHANGE[mark]);
     setBeforeStart(false);
+    if (winner) {
+      alert(`${mark} победил!`);
+      setGameOver(true);
+    }
   }
 
   return (
